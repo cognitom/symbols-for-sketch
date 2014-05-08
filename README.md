@@ -1,5 +1,7 @@
 # Symbols for Sketch
 
+![Webfonts](images/webfonts.png)
+
 This repo contains a set of templates to make a symbol font (icon font) with [Sketch](http://bohemiancoding.com/sketch). What to do is ...
 
 0. Setup Tools
