@@ -1,12 +1,12 @@
 # Symbols for Sketch
 
-This repo contains a set of templates to make a symbol font (icon font) for [Sketch](http://bohemiancoding.com/sketch). What to do is ...
+This repo contains a set of templates to make a symbol font (icon font) with [Sketch](http://bohemiancoding.com/sketch). What to do is ...
 
 0. Setup Tools
 0. Draw Icons
 0. Gulp!
 
-Just 3 steps! Enjoy making your fonts ;-)
+Just 3 steps! Enjoy making your original fonts ;-)
 
 ![Screenshot of Template](images/template.png)
 
@@ -113,7 +113,7 @@ Then check the `dist` directory. There'll be the font and CSS files generated.
 
 If you want to change the name of your font, see the gulpfile.js and modify it.
 
-```gulpfile.js
+```javascript
 var gulp = require("gulp");
 var rename = require("gulp-rename");
 var sketch = require("gulp-sketch");
