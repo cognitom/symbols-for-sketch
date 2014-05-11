@@ -132,7 +132,7 @@ gulp.task('symbols', function(){
   }))
   .pipe(iconfont({ fontName: fontName }))
   .on('codepoints', function(codepoints) {
-    gulp.src('css/fontawesome-style.css')
+    gulp.src('css/fontawesome-style.css') // you can also choose "foundation-style.css"
     .pipe(consolidate('lodash', {
       glyphs: codepoints,
       fontName: fontName,
@@ -144,5 +144,30 @@ gulp.task('symbols', function(){
   })
   .pipe(gulp.dest('dist/fonts/')); // set path to export your fonts
 });
+```
+
+
+## CSS Styles
+
+You can choose CSS Style templates, and make your own with [lodash template](http://lodash.com/docs#template).
+
+
+#### (1) like Font Awesome
+
+- respect to: [Font Awesome](http://fontawesome.io/)
+- template: `css/fontawesome-style.css`
+
+```html
+<span class="s s-your_icon"></span>
+```
+
+
+#### (2) like Foundation
+
+- respect to: [Foundation Icon Font 3](http://zurb.com/playground/foundation-icon-fonts-3)
+- template: `css/foundation-style.css`
+
+```html
+<span class="s-your_icon"></span>
 ```
 
