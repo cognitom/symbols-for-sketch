@@ -14,7 +14,7 @@ gulp.task('symbols', function(){
   }))
   .pipe(iconfont({ fontName: fontName }))
   .on('codepoints', function(codepoints) {
-    gulp.src('css/fontawesome-style.css')
+    gulp.src('css/fontawesome-style.css') // you can also choose "foundation-style.css"
     .pipe(consolidate('lodash', {
       glyphs: codepoints,
       fontName: fontName,
