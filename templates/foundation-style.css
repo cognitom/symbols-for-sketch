@@ -10,7 +10,7 @@
 }
 
 <%= glyphs.map(function(glyph){ return '.' + className + '-' + glyph.name + ':before' }).join(',\n') %> {
-  font-family: "foundation-icons";
+  font-family: "<%= fontName %>";
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
