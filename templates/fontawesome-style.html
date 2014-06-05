@@ -6,9 +6,10 @@
       body { font-family: Gill Sans; text-align: center; background: #f7f7f7; }
       body > h1 { color: #666; margin: 1em 0; }
       .glyph { padding: 0; }
-      .glyph > li { display: inline-block; margin: .3em .2em; width: 6em; height: 6em; background: #fff; border-radius: .5em; }
+      .glyph > li { display: inline-block; margin: .3em .2em; width: 5em; height: 6.5em; background: #fff; border-radius: .5em; position: relative; }
       .glyph > li .s { display: block; margin-top: .1em; }
-      .glyph-name { font-size: .8em; color: #999; }
+      .glyph-name { font-size: .8em; color: #666; display: block; }
+      .glyph-codepoint { color: #999; font-family: monospace; }
     </style>
   </head>
   <body>
@@ -17,6 +18,7 @@
       <li>
         <i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>-4x"></i>
         <span class="glyph-name"><%= glyph.name %></span>
+        <span class="glyph-codepoint"><%= glyph.codepoint.toString(16).toUpperCase() %></span>
       </li><% }); %>
     </ul>
   </body>
