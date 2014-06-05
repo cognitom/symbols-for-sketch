@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "symbols";
+  src: url('../fonts/symbols.eot');
+  src: url('../fonts/symbols.eot?#iefix') format('eot'),
+    url('../fonts/symbols.woff') format('woff'),
+    url('../fonts/symbols.ttf') format('truetype'),
+    url('../fonts/symbols.svg#symbols') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.s:before {
+  display: inline-block;
+  font-family: "symbols";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.s-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.s-2x { font-size: 2em; }
+.s-3x { font-size: 3em; }
+.s-4x { font-size: 4em; }
+.s-5x { font-size: 5em; }
+.s-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+
+.s-glyph01:before { content: "\E001" }
+.s-glyph02:before { content: "\E002" }
+.s-glyph03:before { content: "\E003" }
+.s-glyph04:before { content: "\E004" }
+.s-glyph05:before { content: "\E005" }
+.s-glyph06:before { content: "\E006" }
+.s-glyph07:before { content: "\E007" }
+.s-glyph08:before { content: "\E008" }
+.s-glyph09:before { content: "\E009" }
+.s-glyph10:before { content: "\E00A" }
+.s-glyph11:before { content: "\E00B" }
+.s-glyph12:before { content: "\E00C" }
+.s-glyph13:before { content: "\E00D" }
+.s-glyph14:before { content: "\E00E" }
+.s-glyph15:before { content: "\E00F" }
+.s-glyph16:before { content: "\E010" }
+.s-glyph17:before { content: "\E011" }
+.s-glyph18:before { content: "\E012" }
+.s-glyph19:before { content: "\E013" }
+.s-glyph20:before { content: "\E014" }
+.s-glyph21:before { content: "\E015" }
+.s-glyph22:before { content: "\E016" }
+.s-glyph23:before { content: "\E017" }
+.s-glyph24:before { content: "\E018" }
+.s-glyph25:before { content: "\E019" }
+.s-glyph26:before { content: "\E01A" }
+.s-glyph27:before { content: "\E01B" }
+.s-glyph28:before { content: "\E01C" }
+.s-glyph29:before { content: "\E01D" }
+.s-glyph30:before { content: "\E01E" }
+.s-glyph31:before { content: "\E01F" }
+.s-glyph32:before { content: "\E020" }
