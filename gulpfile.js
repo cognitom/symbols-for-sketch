@@ -1,40 +1,66 @@
 var gulp = require("gulp");
+var clean = require('gulp-clean');
 var rename = require("gulp-rename");
 var sketch = require("gulp-sketch");
 var iconfont = require('gulp-iconfont');
 var consolidate = require('gulp-consolidate');
+var args = require('yargs')
+  .default('name', 'symbols')
+  .default('template', 'fontawesome')
+  .default('sketchDoc', 'symbol-font-14px.sketch')
+  .default('dist', 'dist')
+  .default('className', 's')
+  .boolean('sample')
+  .default('sample', true)
+  .boolean('forceClean')
+  .argv;
 
-var fontName = 'symbols'; // set name of your symbol font
-var template = 'fontawesome-style'; // you can also choose 'foundation-style'
+// The template can either be fontawesome or foundation. If anything else is
+// given, revert to the default.
+if (args.template !== 'fontawesome' && args.template !== 'foundation') {
+  var template = 'fontawesome-style';
+}
+else {
+  var template = args.template + '-style';
+}
 
-gulp.task('symbols', function(){
-  gulp.src('symbol-font-14px.sketch') // you can also choose 'symbol-font-16px.sketch'
+gulp.task('symbols', function () {
+  gulp.src(args.sketchDoc)
     .pipe(sketch({
       export: 'artboards',
       formats: 'svg'
     }))
-    .pipe(iconfont({ fontName: fontName }))
-    .on('codepoints', function(codepoints) {
+    .pipe(iconfont({ fontName: args.name }))
+    .on('codepoints', function (codepoints) {
       var options = {
         glyphs: codepoints,
-        fontName: fontName,
-        fontPath: '../fonts/', // set path to font (from your CSS file if relative)
-        className: 's' // set class name in your CSS
+        fontName: args.name,
+        fontPath: '../fonts/',
+        className: args.className
       };
+
       gulp.src('templates/' + template + '.css')
         .pipe(consolidate('lodash', options))
-        .pipe(rename({ basename:fontName }))
-        .pipe(gulp.dest('dist/css/')); // set path to export your CSS
-        
-      // if you don't need sample.html, remove next 4 lines
-      gulp.src('templates/' + template + '.html')
-        .pipe(consolidate('lodash', options))
-        .pipe(rename({ basename:'sample' }))
-        .pipe(gulp.dest('dist/')); // set path to export your sample HTML
+        .pipe(rename({ basename: args.name }))
+        .pipe(gulp.dest(args.dist + '/css/'));
+
+      if (args.sample) {
+        gulp.src('templates/' + template + '.html')
+          .pipe(consolidate('lodash', options))
+          .pipe(rename({ basename: 'sample' }))
+          .pipe(gulp.dest(args.dist + '/'));
+      }
     })
-    .pipe(gulp.dest('dist/fonts/')); // set path to export your fonts
+    .pipe(gulp.dest(args.dist + '/fonts/'));
 });
 
-gulp.task('watch', function(){
-    gulp.watch('*.sketch/Data', ['symbols']);
+gulp.task('watch', function () {
+  gulp.watch('*.sketch/Data', ['symbols']);
+});
+
+// Delete everything in the dist directory.
+// To remove files outside the current directory pass the --forceClean flag
+gulp.task('clean-dist', function () {
+  return gulp.src(args.dist + '/*', {read: false})
+    .pipe(clean({force: args.forceClean}));
 });
