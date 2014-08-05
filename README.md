@@ -140,6 +140,8 @@ You can customize the output with the following options.
 
 --no-sample    [boolean] Pass this if you don't want the sample.html generated.
 
+--no-css       [boolean] Pass this if you don't want the CSS generated.
+
 --forceClean   [boolean] For use with the `clean-dist` task. Allows for directories
                outside the current working directory to be cleaned. You will see
                an error if you try to use the clean task for external dirs without

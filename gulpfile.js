@@ -12,17 +12,12 @@ var args = require('yargs')
   .default('className', 's')
   .boolean('sample')
   .default('sample', true)
+  .boolean('css')
+  .default('css', true)
   .boolean('forceClean')
   .argv;
 
-// The template can either be fontawesome or foundation. If anything else is
-// given, revert to the default.
-if (args.template !== 'fontawesome' && args.template !== 'foundation') {
-  var template = 'fontawesome-style';
-}
-else {
-  var template = args.template + '-style';
-}
+var template = args.template + '-style';
 
 gulp.task('symbols', function () {
   gulp.src(args.sketchDoc)
@@ -39,10 +34,12 @@ gulp.task('symbols', function () {
         className: args.className
       };
 
-      gulp.src('templates/' + template + '.css')
-        .pipe(consolidate('lodash', options))
-        .pipe(rename({ basename: args.name }))
-        .pipe(gulp.dest(args.dist + '/css/'));
+      if (args.css) {
+        gulp.src('templates/' + template + '.css')
+          .pipe(consolidate('lodash', options))
+          .pipe(rename({ basename: args.name }))
+          .pipe(gulp.dest(args.dist + '/css/'));
+      }
 
       if (args.sample) {
         gulp.src('templates/' + template + '.html')
