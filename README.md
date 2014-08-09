@@ -124,28 +124,34 @@ $ gulp clean-dist [options]
 You can customize the output with the following options.
 
 ```
---name         [string] The name of the font. Default is 'symbols'.
+-d, --sketchDoc    [string] The path to the Sketch document to use. Default is
+                   'symbol-font-14px.sketch'. The default Sketch doc is in this repo.
 
---template     [string] The Lodash template. Can be 'fontawesome' or 'foundation'.
-               Default is 'fontawesome'.
+-n, --name         [string] This will be the name of the font. Default is 'symbols'.
 
---sketchDoc    [string] The path to the Sketch document to use. Default is
-               'symbol-font-14px.sketch'. The default Sketch doc is in this repo.
+-c, --className    [string] The class used in the generated CSS and HTML. Default is 's'.
 
---dist         [string] The path to the distribution directory. Default is 'dist' in
-               the current working directory. This will be created if it does
-               not already exist.
+-l, --location     [string] Where the files will be saved. Default is 'dist' in
+                   the current working directory. This will be created if it does
+                   not already exist.
 
---className    [string] The class used in the generated CSS and HTML. Default is 's'.
+-t, --template     [string] Lodash template for html/css. "fontawesome", "foundation"
+                   or custom. Default is 'fontawesome'.
 
---no-sample    [boolean] Pass this if you don't want the sample.html generated.
+--no-sample        [boolean] Pass this if you don't want the sample.html generated.
 
---no-css       [boolean] Pass this if you don't want the CSS generated.
+--no-css           [boolean] Pass this if you don't want the CSS generated.
 
---forceClean   [boolean] For use with the `clean-dist` task. Allows for directories
-               outside the current working directory to be cleaned. You will see
-               an error if you try to use the clean task for external dirs without
-               this.
+--forceClean       [boolean] For use with the `clean-dist` task. Allows for directories
+                   outside the current working directory to be cleaned. You will see
+                   an error if you try to use the clean task for external dirs without
+                   this.
+```
+
+You can see all the options, descriptions, and defaults on the command line using:
+
+```
+gulp -h
 ```
 
 ## CSS Styles
