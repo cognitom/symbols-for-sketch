@@ -4,7 +4,8 @@ var rename = require("gulp-rename");
 var sketch = require("gulp-sketch");
 var iconfont = require('gulp-iconfont');
 var consolidate = require('gulp-consolidate');
-var args = require('yargs')
+var yargs = require('yargs');
+var args = yargs
   .default('name', 'symbols')
   .default('template', 'fontawesome')
   .default('sketchDoc', 'symbol-font-14px.sketch')
@@ -15,9 +16,15 @@ var args = require('yargs')
   .boolean('css')
   .default('css', true)
   .boolean('forceClean')
+  .boolean('h')
+  .alias('h', 'help')
   .argv;
 
 var template = args.template + '-style';
+
+if (args.h) {
+  yargs.showHelp();
+}
 
 gulp.task('symbols', function () {
   gulp.src(args.sketchDoc)
