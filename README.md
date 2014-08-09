@@ -108,7 +108,7 @@ After saving your Sketch file, go to your terminal.
 $ gulp symbols [options]
 ```
 
-The fonts, CSS, and HTML will be in the given `--dist` directory or default of 'dist'
+The fonts, CSS, and HTML will be in the given `-l` directory or default of 'dist'
 if none is provided.
 
 ### Cleanup
