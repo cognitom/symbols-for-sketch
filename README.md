@@ -30,7 +30,7 @@ You haven't got Sketch yet? Visit [App Store](https://itunes.apple.com/jp/app/sk
 Download [Sketch Tools](http://sketchtool.bohemiancoding.com/sketchtool-latest.zip). Then extract it and save these 2 files into `/usr/local/bin`.
 
 - sketchtool
-- sketchtool resources.bundle 
+- sketchtool resources.bundle
 
 To open `/usr/local/bin`, you can use "Go > Go to Folder..." menu command in Finder.
 
@@ -100,60 +100,59 @@ The name of the artboard is important. It define the name of not only the glyph 
 ![The name of artboard](images/sample.png)
 
 
-## Gulp!
+## Usage
 
-After saving your Sketch file, go back to Terminal.app again.
+After saving your Sketch file, go to your terminal.
 
 ```bash
-$ gulp symbols
+$ gulp symbols [options]
 ```
 
-Then check the `dist` directory. There'll be the font and CSS files generated.
+The fonts, CSS, and HTML will be in the given `-l` directory or default of 'dist'
+if none is provided.
 
+### Cleanup
 
-### Config
+If you want to delete everything in a given distribution directory.
 
-If you want to change the name of your font, see the gulpfile.js and modify it.
-
-```javascript
-var gulp = require("gulp");
-var rename = require("gulp-rename");
-var sketch = require("gulp-sketch");
-var iconfont = require('gulp-iconfont');
-var consolidate = require('gulp-consolidate');
-
-var fontName = 'symbols'; // set name of your symbol font
-var template = 'fontawesome-style'; // you can also choose 'foundation-style'
-
-gulp.task('symbols', function(){
-  gulp.src("symbol-font-14px.sketch") // you can also choose "symbol-font-16px.sketch"
-    .pipe(sketch({
-      export: 'artboards',
-      formats: 'svg'
-    }))
-    .pipe(iconfont({ fontName: fontName }))
-    .on('codepoints', function(codepoints) {
-      var options = {
-        glyphs: codepoints,
-        fontName: fontName,
-        fontPath: '../fonts/', // set path to font (from your CSS file if relative)
-        className: 's' // set class name in your CSS
-      };
-      gulp.src('templates/' + template + '.css')
-        .pipe(consolidate('lodash', options))
-        .pipe(rename({ basename:fontName }))
-        .pipe(gulp.dest('dist/css/')); // set path to export your CSS
-
-      // if you don't need sample.html, remove next 4 lines
-      gulp.src('templates/' + template + '.html')
-        .pipe(consolidate('lodash', options))
-        .pipe(rename({ basename:'sample' }))
-        .pipe(gulp.dest('dist/')); // set path to export your sample HTML
-    })
-    .pipe(gulp.dest('dist/fonts/')); // set path to export your fonts
-});
+```bash
+$ gulp clean-dist [options]
 ```
 
+### Options
+
+You can customize the output with the following options.
+
+```
+-d, --sketchDoc    [string] The path to the Sketch document to use. Default is
+                   'symbol-font-14px.sketch'. The default Sketch doc is in this repo.
+
+-n, --name         [string] This will be the name of the font. Default is 'symbols'.
+
+-c, --className    [string] The class used in the generated CSS and HTML. Default is 's'.
+
+-l, --location     [string] Where the files will be saved. Default is 'dist' in
+                   the current working directory. This will be created if it does
+                   not already exist.
+
+-t, --template     [string] Lodash template for html/css. "fontawesome", "foundation"
+                   or custom. Default is 'fontawesome'.
+
+--no-sample        [boolean] Pass this if you don't want the sample.html generated.
+
+--no-css           [boolean] Pass this if you don't want the CSS generated.
+
+--forceClean       [boolean] For use with the `clean-dist` task. Allows for directories
+                   outside the current working directory to be cleaned. You will see
+                   an error if you try to use the clean task for external dirs without
+                   this.
+```
+
+You can see all the options, descriptions, and defaults on the command line using:
+
+```
+gulp -h
+```
 
 ## CSS Styles
 
@@ -178,4 +177,3 @@ You can choose CSS Style templates, and make your own with [lodash template](htt
 ```html
 <span class="s-your_icon"></span>
 ```
-

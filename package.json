@@ -25,6 +25,8 @@
     "gulp-rename": "*",
     "gulp-consolidate": "*",
     "gulp-sketch": "*",
-    "gulp-iconfont": "*"
+    "gulp-iconfont": "*",
+    "yargs": "*",
+    "gulp-clean": "~0.3.1"
   }
 }
