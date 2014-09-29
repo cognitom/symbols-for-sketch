@@ -36,5 +36,5 @@ gulp.task('symbols', function(){
 });
 
 gulp.task('watch', function(){
-    gulp.watch('*.sketch/Data', ['symbols']);
+  gulp.watch('*.sketch/Data', { debounceDelay: 3000 }, ['symbols']); // wait 3 sec after the last run
 });
