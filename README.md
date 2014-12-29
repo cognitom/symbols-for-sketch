@@ -25,17 +25,18 @@ Just 3 steps! Enjoy making your original fonts ;-)
 
 ### Sketch and Sketch Tools
 
-You haven't got Sketch yet? Visit [App Store](https://itunes.apple.com/jp/app/sketch-3/id852320343?l=en&mt=12). It's worth more than its price tag.
+You haven't got Sketch yet? Visit [App Store](https://itunes.apple.com/jp/app/sketch-3/id852320343?l=en&mt=12). It's worth more than its price tag. Next, get the `sketchtool` to controll Sketch.app via CLI.
 
-Download [Sketch Tools](http://sketchtool.bohemiancoding.com/sketchtool-latest.zip). Then extract it and save these 2 files into `/usr/local/bin`.
+0. Download [Sketch Tools](http://sketchtool.bohemiancoding.com/sketchtool-latest.zip).
+0. Unzip the archive.
+0. Open Terminal.
+0. Change the current directory to the unziped folder.
+0. Run the instll script and enter your password.
 
-- sketchtool
-- sketchtool resources.bundle 
-
-To open `/usr/local/bin`, you can use "Go > Go to Folder..." menu command in Finder.
-
-![Go > Go to Folder... in Finder](images/finder.png)
-
+```bash
+$ cd ~/Donwloads/scketchtool/
+$ sudo ./install.sh
+```
 
 ### Node.js and gulp.js
 
@@ -178,4 +179,3 @@ You can choose CSS Style templates, and make your own with [lodash template](htt
 ```html
 <span class="s-your_icon"></span>
 ```
-
