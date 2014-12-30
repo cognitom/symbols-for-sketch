@@ -179,3 +179,18 @@ You can choose CSS Style templates, and make your own with [lodash template](htt
 ```html
 <span class="s-your_icon"></span>
 ```
+
+## Trouble Shooting
+
+#### Case 1: Icons with circle 'filled' with black
+
+Conditions like below.
+
+- Icons which has an inner symbol with a circle or a box outside
+- It seems OK with Chrome/Safari on Mac
+- Not OK with Safari on iOS, Chrome on Android
+- Not OK with IE on Windows
+
+Solution: Revers Order of paths. See the screenshot below. Then Save and recreate the font.
+
+![Path Order](images/path-order.png)
