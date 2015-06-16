@@ -195,6 +195,15 @@ Solution: Revers Order of paths. See the screenshot below. Then Save and recreat
 
 ![Path Order](images/path-order.png)
 
+#### Case 2: Can't export CSS/HTML
+
+[gulp-iconfont](https://github.com/nfroidure/gulp-iconfont) has changed their API from v2 (June 2015), so we got to change a recipe little bit.
+
+- Event name: `codepoints` to `glyphs`
+- Arguments passed: `codepoint` is equivalent to `glyph.unicode[0].charCodeAt(0)`
+
+[See more detail](https://github.com/cognitom/symbols-for-sketch/blob/6cf363c0926f2ea00f7249c65cea7a279e590601/gulpfile.js#L17-L26).
+
 ## History
 
 - 1.1.0: Catch up to [gulp-iconfont v2](https://github.com/nfroidure/gulp-iconfont)([svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont))
