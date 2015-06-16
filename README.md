@@ -197,7 +197,7 @@ Solution: Revers Order of paths. See the screenshot below. Then Save and recreat
 
 #### Case 2: Can't export CSS/HTML
 
-[gulp-iconfont](https://github.com/nfroidure/gulp-iconfont) has changed their API from v2 (June 2015), so we got to change a recipe little bit.
+[gulp-iconfont](https://github.com/nfroidure/gulp-iconfont) has changed their API from v2 (June 2015), so we got to change our recipe a little bit.
 
 - Event name: `codepoints` to `glyphs`
 - Arguments passed: `codepoint` is equivalent to `glyph.unicode[0].charCodeAt(0)`
