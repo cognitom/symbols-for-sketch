@@ -194,3 +194,7 @@ Conditions like below.
 Solution: Revers Order of paths. See the screenshot below. Then Save and recreate the font.
 
 ![Path Order](images/path-order.png)
+
+## History
+
+- 1.1.0: Catch up to [gulp-iconfont v2](https://github.com/nfroidure/gulp-iconfont)([svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont))

@@ -14,9 +14,12 @@ gulp.task('symbols', function(){
       formats: 'svg'
     }))
     .pipe(iconfont({ fontName: fontName }))
-    .on('codepoints', function(codepoints) {
+    .on('glyphs', function(glyphs) {
       var options = {
-        glyphs: codepoints,
+        glyphs: glyphs.map(function(glyph) {
+          // this line is needed because gulp-iconfont has changed the api from 2.0
+          return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
+        }),
         fontName: fontName,
         fontPath: '../fonts/', // set path to font (from your CSS file if relative)
         className: 's' // set class name in your CSS
@@ -25,7 +28,7 @@ gulp.task('symbols', function(){
         .pipe(consolidate('lodash', options))
         .pipe(rename({ basename:fontName }))
         .pipe(gulp.dest('dist/css/')); // set path to export your CSS
-        
+
       // if you don't need sample.html, remove next 4 lines
       gulp.src('templates/' + template + '.html')
         .pipe(consolidate('lodash', options))

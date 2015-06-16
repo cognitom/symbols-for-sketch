@@ -1,6 +1,6 @@
 {
   "name": "symbols-for-sketch",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "homepage": "https://github.com/cognitom/symbols-for-sketch",
   "repository": {
     "type": "git",
@@ -19,12 +19,12 @@
   "author": "Tsutomu Kawamura <tsutomu@librize.com>",
   "license": "MIT",
   "devDependencies": {
-    "coffee-script": "*",
-    "lodash": "*",
-    "gulp": "*",
-    "gulp-rename": "*",
-    "gulp-consolidate": "*",
-    "gulp-sketch": "*",
-    "gulp-iconfont": "*"
+    "coffee-script": "^1.9.3",
+    "gulp": "^3.9.0",
+    "gulp-consolidate": "^0.1.2",
+    "gulp-iconfont": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sketch": "^0.0.9",
+    "lodash": "^3.9.3"
   }
 }
