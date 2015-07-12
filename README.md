@@ -122,6 +122,7 @@ var rename = require("gulp-rename");
 var sketch = require("gulp-sketch");
 var iconfont = require('gulp-iconfont');
 var consolidate = require('gulp-consolidate');
+var gulpImagemin = require('gulp-imagemin'); // simplify the svg in case you run into troubles with transformed elements
 
 var fontName = 'symbols'; // set name of your symbol font
 var template = 'fontawesome-style'; // you can also choose 'foundation-style'
@@ -132,6 +133,7 @@ gulp.task('symbols', function(){
       export: 'artboards',
       formats: 'svg'
     }))
+    .pipe(gulpImagemin()) // pipe image-min before you pass it to the iconfont task
     .pipe(iconfont({ fontName: fontName }))
     .on('codepoints', function(codepoints) {
       var options = {
@@ -203,6 +205,14 @@ Solution: Revers Order of paths. See the screenshot below. Then Save and recreat
 - Arguments passed: `codepoint` is equivalent to `glyph.unicode[0].charCodeAt(0)`
 
 [See more detail](https://github.com/cognitom/symbols-for-sketch/blob/6cf363c0926f2ea00f7249c65cea7a279e590601/gulpfile.js#L17-L26).
+
+#### Case 3: Transformed items appear outside the artboard
+
+Conditions:
+
+- rotated and/or transformed elements appear at wrong coordinates after export
+
+Solution: Pipe [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) before the iconfont task, which basically makes use of the [SVG Optimizer](https://github.com/svg/svgo) and collapses multiple transformations.
 
 ## History
 
