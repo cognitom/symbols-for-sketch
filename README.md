@@ -34,7 +34,7 @@ You haven't got Sketch yet? Visit [App Store](https://itunes.apple.com/jp/app/sk
 0. Run the instll script and enter your password.
 
 ```bash
-$ cd ~/Donwloads/scketchtool/
+$ cd ~/Downloads/sketchtools/
 $ sudo ./install.sh
 ```
 
