@@ -16,27 +16,12 @@ Just 3 steps! Enjoy making your original fonts ;-)
 ## Requirements
 
 - Mac
-- [Sketch 3](http://bohemiancoding.com/sketch) and [Sketch Tools](http://bohemiancoding.com/sketch/tool/)
 - [Node.js](http://nodejs.org/)
 - [gulp.js](http://gulpjs.com/)
+- [Sketch 3](http://bohemiancoding.com/sketch) and [Sketch Tools](http://bohemiancoding.com/sketch/tool/)
 
 
 ## Setup Tools
-
-### Sketch and Sketch Tools
-
-You haven't got Sketch yet? Visit [App Store](https://itunes.apple.com/jp/app/sketch-3/id852320343?l=en&mt=12). It's worth more than its price tag. Next, get the `sketchtool` to controll Sketch.app via CLI.
-
-0. Download [Sketch Tools](http://sketchtool.bohemiancoding.com/sketchtool-latest.zip).
-0. Unzip the archive.
-0. Open Terminal.
-0. Change the current directory to the unziped folder.
-0. Run the instll script and enter your password.
-
-```bash
-$ cd ~/Downloads/sketchtools/
-$ sudo ./install.sh
-```
 
 ### Node.js and gulp.js
 
@@ -79,6 +64,19 @@ We use these plugin for gulp.js, FYI.
 
 - [gulp-sketch](https://github.com/cognitom/gulp-sketch)
 - [gulp-iconfont](https://github.com/nfroidure/gulp-iconfont)
+
+
+### Sketch and Sketch Tools
+
+You haven't got Sketch yet? Visit [App Store](https://itunes.apple.com/jp/app/sketch-3/id852320343?l=en&mt=12). It's worth more than its price tag. Next, get the `sketchtool` to extract the data from `.sketch` files via CLI.
+
+To get the tool, run this command:
+
+```bash
+$ npm run installtool
+```
+
+Or, you can do the same thing manually. See [install sketchtool manually](#install-sketchtool-manually).
 
 
 ## Draw Icons
@@ -214,6 +212,22 @@ Conditions:
 
 Solution: Pipe [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) before the iconfont task, which basically makes use of the [SVG Optimizer](https://github.com/svg/svgo) and collapses multiple transformations.
 
+## Install sketchtool manually
+
+You can install `sketchtool` by `$ npm run installtool` as mentioned already, but if you prefer to do it manually, follow the steps below:
+
+0. Download [Sketch Tools](http://sketchtool.bohemiancoding.com/sketchtool-latest.zip).
+0. Unzip the archive.
+0. Open Terminal.
+0. Change the current directory to the unziped folder.
+0. Run the instll script and enter your password.
+
+```bash
+$ cd ~/Downloads/sketchtools/
+$ sudo ./install.sh
+```
+
 ## History
 
+- 1.2.0: Catch up versions, simplify the instruction
 - 1.1.0: Catch up to [gulp-iconfont v2](https://github.com/nfroidure/gulp-iconfont)([svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont))
