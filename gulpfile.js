@@ -24,6 +24,11 @@ gulp.task('symbols', function(){
         fontPath: '../fonts/', // set path to font (from your CSS file if relative)
         className: 's' // set class name in your CSS
       };
+      gulp.src('templates/' + template + '.xml')
+        .pipe(consolidate('lodash', options))
+        .pipe(rename({ basename:fontName }))
+        .pipe(gulp.dest('dist/xml/')); // set path to export your xml
+
       gulp.src('templates/' + template + '.css')
         .pipe(consolidate('lodash', options))
         .pipe(rename({ basename:fontName }))
