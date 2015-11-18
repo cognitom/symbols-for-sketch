@@ -150,6 +150,12 @@ gulp.task('symbols', function(){
         .pipe(consolidate('lodash', options))
         .pipe(rename({ basename:'sample' }))
         .pipe(gulp.dest('dist/')); // set path to export your sample HTML
+
+      // if you don't need android string xml, remove next 4 lines
+      gulp.src('templates/' + template + '.xml')
+        .pipe(consolidate('lodash', options))
+        .pipe(rename({ basename:fontName }))
+        .pipe(gulp.dest('dist/android/')); // set path to export your android res/value
     })
     .pipe(gulp.dest('dist/fonts/')); // set path to export your fonts
 });
