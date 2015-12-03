@@ -5,15 +5,20 @@ var iconfont = require('gulp-iconfont');
 var consolidate = require('gulp-consolidate');
 
 var fontName = 'symbols'; // set name of your symbol font
+var fontCssClassName = 's'; // set class name in your CSS
 var template = 'fontawesome-style'; // you can also choose 'foundation-style'
+var skethcFileName = 'symbol-font-14px.sketch'; // you can also choose 'symbol-font-16px.sketch'
 
 gulp.task('symbols', function(){
-  gulp.src('symbol-font-14px.sketch') // you can also choose 'symbol-font-16px.sketch'
+  gulp.src(skethcFileName)
     .pipe(sketch({
       export: 'artboards',
       formats: 'svg'
     }))
-    .pipe(iconfont({ fontName: fontName }))
+    .pipe(iconfont({
+        fontName: fontName,
+        formats: ['ttf', 'eot', 'woff', 'svg']
+    }))
     .on('glyphs', function(glyphs) {
       var options = {
         glyphs: glyphs.map(function(glyph) {
@@ -22,7 +27,7 @@ gulp.task('symbols', function(){
         }),
         fontName: fontName,
         fontPath: '../fonts/', // set path to font (from your CSS file if relative)
-        className: 's' // set class name in your CSS
+        className: fontCssClassName
       };
       gulp.src('templates/' + template + '.css')
         .pipe(consolidate('lodash', options))
