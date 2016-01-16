@@ -6,6 +6,7 @@ var consolidate = require('gulp-consolidate');
 
 var fontName = 'symbols'; // set name of your symbol font
 var template = 'fontawesome-style'; // you can also choose 'foundation-style'
+var runTimestamp = Math.round(Date.now()/1000);
 
 gulp.task('symbols', function(){
   gulp.src('symbol-font-14px.sketch') // you can also choose 'symbol-font-16px.sketch'
@@ -13,7 +14,11 @@ gulp.task('symbols', function(){
       export: 'artboards',
       formats: 'svg'
     }))
-    .pipe(iconfont({ fontName: fontName }))
+    .pipe(iconfont({
+      fontName: fontName, // required
+      formats: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
+      timestamp: runTimestamp // recommended to get consistent builds when watching files
+    }))
     .on('glyphs', function(glyphs) {
       var options = {
         glyphs: glyphs.map(function(glyph) {
