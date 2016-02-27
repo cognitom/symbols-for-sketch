@@ -106,7 +106,7 @@ Then check the `dist` directory. There'll be the font and CSS files generated.
 
 ### Config
 
-If you want to change the name of your font, see the [gulpfile.js](gulpfile.js) and modify it.
+You can change the detail as you like. See the [gulpfile.js](gulpfile.js) and modify it.
 
 To change the name or style of your font, it would be enough just changing the part below:
 
