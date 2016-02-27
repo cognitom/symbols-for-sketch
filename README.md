@@ -151,9 +151,9 @@ You can choose CSS Style templates, and make your own with [lodash template](htt
 ```
 
 
-## Variations
+## Variants
 
-### Android
+### for Android Apps
 
 See [variants/android](variants/android) directory.
 
