@@ -103,12 +103,21 @@ The name of the artboard is important. It define the name of not only the glyph 
 
 After saving your Sketch file, go back to Terminal.app again.
 
+#### CSS
+
 ```bash
 $ gulp symbols
 ```
 
 Then check the `dist` directory. There'll be the font and CSS files generated.
 
+#### Android
+
+```bash
+$ gulp symbols-androd
+```
+
+Then check the `dist` directory. There'll be the font and XML files generated.
 
 ### Config
 
@@ -150,6 +159,12 @@ gulp.task('symbols', function(){
         .pipe(consolidate('lodash', options))
         .pipe(rename({ basename:'sample' }))
         .pipe(gulp.dest('dist/')); // set path to export your sample HTML
+
+      // if you don't need android string xml, remove next 4 lines
+      gulp.src('templates/' + template + '.xml')
+        .pipe(consolidate('lodash', options))
+        .pipe(rename({ basename:fontName }))
+        .pipe(gulp.dest('dist/android/')); // set path to export your android res/value
     })
     .pipe(gulp.dest('dist/fonts/')); // set path to export your fonts
 });
@@ -179,6 +194,24 @@ You can choose CSS Style templates, and make your own with [lodash template](htt
 ```html
 <span class="s-your_icon"></span>
 ```
+
+## Android import icon font
+#### (1) Move font to Assest directory
+![Android Assest](images/android-assets.png)
+
+#### (2) Move xml to res/value
+![Android Value](images/android-value.png)
+
+#### (3) Android TextView use font
+```java
+Typeface font = Typeface.createFromAsset(getContext().getAssets(), "symbols.ttf");
+textView.setTypeface(font);
+textView.setText(R.string.add);
+```
+
+#### (4) Demo
+![Android Demo](images/android-demo.png)
+
 
 ## Trouble Shooting
 
