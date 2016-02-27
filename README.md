@@ -103,21 +103,12 @@ The name of the artboard is important. It define the name of not only the glyph 
 
 After saving your Sketch file, go back to Terminal.app again.
 
-#### CSS
-
 ```bash
 $ gulp symbols
 ```
 
 Then check the `dist` directory. There'll be the font and CSS files generated.
 
-#### Android
-
-```bash
-$ gulp symbols-androd
-```
-
-Then check the `dist` directory. There'll be the font and XML files generated.
 
 ### Config
 
@@ -194,23 +185,6 @@ You can choose CSS Style templates, and make your own with [lodash template](htt
 ```html
 <span class="s-your_icon"></span>
 ```
-
-## Android import icon font
-#### (1) Move font to Assest directory
-![Android Assest](images/android-assets.png)
-
-#### (2) Move xml to res/value
-![Android Value](images/android-value.png)
-
-#### (3) Android TextView use font
-```java
-Typeface font = Typeface.createFromAsset(getContext().getAssets(), "symbols.ttf");
-textView.setTypeface(font);
-textView.setText(R.string.add);
-```
-
-#### (4) Demo
-![Android Demo](images/android-demo.png)
 
 
 ## Trouble Shooting
