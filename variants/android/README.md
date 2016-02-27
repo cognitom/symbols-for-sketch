@@ -2,9 +2,8 @@
 
 ## Gulp!
 
-After saving your Sketch file, go back to Terminal.app again.
-
 ```bash
+$ cd variants/android
 $ gulp symbols
 ```
 
