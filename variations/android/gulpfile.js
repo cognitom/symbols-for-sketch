@@ -1,31 +1,51 @@
-var gulp = require("gulp");
-var rename = require("gulp-rename");
-var sketch = require("gulp-sketch");
-var iconfont = require('gulp-iconfont');
-var consolidate = require('gulp-consolidate');
+const
+  gulp = require('gulp'),
+  rename = require('gulp-rename'),
+  sketch = require('gulp-sketch'),
+  iconfont = require('gulp-iconfont'),
+  consolidate = require('gulp-consolidate')
 
-var fontName = 'symbols'; // set name of your symbol font
-var skethcFileName = 'symbol-android-16px.sketch';
+/**
+ * Font settings
+ */
+const
+  // set name of your symbol font
+  fontName = 'symbols'
 
-gulp.task('symbols', function(){
-  gulp.src(skethcFileName) // you can also choose 'symbol-font-16px.sketch'
+/**
+ * Recommended to get consistent builds when watching files
+ * See https://github.com/nfroidure/gulp-iconfont
+ */
+const timestamp = Math.round(Date.now() / 1000)
+
+gulp.task('symbols', () =>
+  gulp.src('symbol-android-16px.sketch')
     .pipe(sketch({
       export: 'artboards',
       formats: 'svg'
     }))
-    .pipe(iconfont({ fontName: fontName }))
+    .pipe(iconfont({
+      fontName,
+      formats: ['ttf'],
+      timestamp,
+      log: () => {} // suppress unnecessary logging
+    }))
     .on('glyphs', function(glyphs) {
-      var options = {
-        glyphs: glyphs.map(function(glyph) {
-          // this line is needed because gulp-iconfont has changed the api from 2.0
-          return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
-        }),
+      const options = {
+        glyphs: glyphs.map(mapGlyphs),
         fontName: fontName
-      };
+      }
       gulp.src('android.xml')
         .pipe(consolidate('lodash', options))
-        .pipe(rename({ basename:fontName }))
-        .pipe(gulp.dest('dist/xml/')); // set path to export your xml
+        .pipe(rename({ basename: fontName }))
+        .pipe(gulp.dest('dist/xml/')) // set path to export your xml
     })
-    .pipe(gulp.dest('dist/fonts/')); // set path to export your fonts
-});
+    .pipe(gulp.dest('dist/fonts/')) // set path to export your fonts
+)
+
+/**
+ * This is needed for mapping glyphs and codepoints.
+ */
+function mapGlyphs(glyph) {
+  return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
+}

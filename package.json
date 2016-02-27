@@ -1,6 +1,6 @@
 {
   "name": "symbols-for-sketch",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "homepage": "https://github.com/cognitom/symbols-for-sketch",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "description": "Symbol font templates for Sketch.app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "installtool": "curl -L https://raw.githubusercontent.com/cognitom/dotfiles/master/lib/sketchtool.sh | sudo sh"
+    "installtool": "curl -L https://raw.githubusercontent.com/cognitom/gulp-sketch/master/install-sketchtool.sh | sudo sh"
   },
   "keywords": [
     "symbol font",
@@ -20,12 +20,11 @@
   "author": "Tsutomu Kawamura <tsutomu@librize.com>",
   "license": "MIT",
   "devDependencies": {
-    "coffee-script": "^1.9.3",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-consolidate": "^0.1.2",
-    "gulp-iconfont": "^5.0.0",
+    "gulp-iconfont": "^6.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sketch": "^0.1.0",
-    "lodash": "^3.9.3"
+    "gulp-sketch": "^1.0.2",
+    "lodash": "^4.5.1"
   }
 }
