@@ -8,7 +8,8 @@
   },
   "description": "Symbol font templates for Sketch.app",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp watch",
+    "symbols": "gulp symbols",
     "installtool": "curl -L https://raw.githubusercontent.com/cognitom/gulp-sketch/master/install-sketchtool.sh | sudo sh"
   },
   "private": true,
