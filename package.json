@@ -11,6 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "installtool": "curl -L https://raw.githubusercontent.com/cognitom/gulp-sketch/master/install-sketchtool.sh | sudo sh"
   },
+  "private": true,
   "keywords": [
     "symbol font",
     "icon font",
