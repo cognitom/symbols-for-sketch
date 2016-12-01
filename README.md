@@ -16,9 +16,8 @@ Just 3 steps! Enjoy making your original fonts ;-)
 ## Requirements
 
 - Mac
-- [Node.js](http://nodejs.org/)
-- [gulp.js](http://gulpjs.com/)
-- [Sketch 3](http://bohemiancoding.com/sketch) and [Sketch Tools](http://bohemiancoding.com/sketch/tool/)
+- [Node.js](https://nodejs.org/)
+- [Sketch](https://www.sketchapp.com/)
 
 
 ## Setup Tools
@@ -35,35 +34,23 @@ Open the file downloaded and install it into your mac.
 
 ![Install Node.js](images/install-node.png)
 
-Open Terminal.app. You may find it at `/Applications/Utilities/Terminal.app` as you know. Type the command below to install gulp.
-
-```bash
-$ sudo npm install -g gulp
-```
-
-![$ sudo npm install -g gulp](images/install-gulp.png)
-
-
 ### Download this repo
 
 Download [this repo from GitHub](https://github.com/cognitom/symbols-for-sketch/archive/master.zip). Extract it into the folder you like. e.g. `/Users/yourname/Documents/your_icons`
 
-Move to the folder in Terminal.app
+Open Terminal.app. You may find it at `/Applications/Utilities/Terminal.app` as you know.
+
+Go to the folder in Terminal.app:
 
 ```bash
 $ cd /Users/yourname/Documents/your_icons
 ```
 
-Install some tools into the folder.
+Install some tools into the folder:
 
 ```bash
 $ npm install
 ```
-
-We use these plugin for gulp.js, FYI.
-
-- [gulp-sketch](https://github.com/cognitom/gulp-sketch)
-- [gulp-iconfont](https://github.com/nfroidure/gulp-iconfont)
 
 
 ### Sketch and Sketch Tools
@@ -98,7 +85,7 @@ The name of the artboard is important. It define the name of not only the glyph 
 After saving your Sketch file, go back to Terminal.app again.
 
 ```bash
-$ gulp symbols
+$ npm run symbols
 ```
 
 Then check the `dist` directory. There'll be the font and CSS files generated.
@@ -114,16 +101,21 @@ To change the name or style of your font, it would be enough just changing the p
 /**
  * Font settings
  */
-const
-  // set name of your symbol font
-  fontName = 'symbols',
-  // set class name in your CSS
-  className = 's',
-  // you can also choose 'foundation-style'
-  template = 'fontawesome-style',
-  // you can also choose 'symbol-font-16px.sketch'
-  skethcFileName = 'symbol-font-14px.sketch'
+ const fontName = 'symbols' // set name of your symbol font
+ const className = 's' // set class name in your CSS
+ const template = 'fontawesome-style' // or 'foundation-style'
+ const skethcFileName = 'symbol-font-14px.sketch' // or 'symbol-font-16px.sketch'
 ```
+
+### Live reloading
+
+Try the command below in Terminal.app. This time you will get the browser open automatically.
+
+```bash
+$ npm start
+```
+
+Then, keep the browser open and change your icon on `symbol-font-*.sketch` and save it. Boom! Magic will happen. The output inside the browser will be also changed. It's really really convenient. You must try it out.
 
 
 ## CSS Styles
@@ -156,6 +148,14 @@ You can choose CSS Style templates, and make your own with [lodash template](htt
 ### for Android Apps
 
 See [variants/android](variants/android) directory.
+
+
+## Behind the scenes
+
+We use [gulp](http://gulpjs.com/) and some plugins.
+
+- [gulp-sketch](https://github.com/cognitom/gulp-sketch): to export SVG files from `.sketch` files
+- [gulp-iconfont](https://github.com/nfroidure/gulp-iconfont): to convert them into font files
 
 
 ## Trouble Shooting
