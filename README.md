@@ -157,6 +157,7 @@ We use [gulp](http://gulpjs.com/) and some plugins.
 - [gulp-sketch](https://github.com/cognitom/gulp-sketch): to export SVG files from `.sketch` files
 - [gulp-iconfont](https://github.com/nfroidure/gulp-iconfont): to convert them into font files
 
+To live-reload, we're using [browser-sync](https://browsersync.io/).
 
 ## Trouble Shooting
 
@@ -193,6 +194,10 @@ Solution: Pipe [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) be
 
 ## History
 
+- 2.1.0:
+  - Added: live reloading (finally found [the solution](https://github.com/cognitom/symbols-for-sketch/blob/v2.1.0/gulpfile.js#L72-L78) in browser-sync)
+  - Added: npm scripts. Now no need to install gulp globally
+  - Changed: compatible with standard.js
 - 2.0.0: ES6, WOFF2, and adding variations (for Android app by @weitsai)
 - 1.2.0: Catch up versions, simplify the instruction
 - 1.1.0: Catch up to [gulp-iconfont v2](https://github.com/nfroidure/gulp-iconfont)([svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont))
