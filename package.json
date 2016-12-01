@@ -20,6 +20,7 @@
   "author": "Tsutomu Kawamura <tsutomu@librize.com>",
   "license": "MIT",
   "devDependencies": {
+    "browser-sync": "^2.18.2",
     "gulp": "^3.9.1",
     "gulp-consolidate": "^0.1.2",
     "gulp-iconfont": "^6.0.0",

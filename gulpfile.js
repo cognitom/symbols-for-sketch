@@ -3,6 +3,7 @@ const rename = require('gulp-rename')
 const sketch = require('gulp-sketch')
 const iconfont = require('gulp-iconfont')
 const consolidate = require('gulp-consolidate')
+const bs = require('browser-sync').create()
 
 /**
  * Font settings
@@ -51,11 +52,27 @@ gulp.task('symbols', () =>
     .pipe(gulp.dest('dist/fonts/')) // set path to export your fonts
 )
 
-gulp.task('watch', () => gulp.watch('*.sketch', ['symbols']))
+gulp.task('watch', ['symbols'], () => {
+  bs.init({
+    files: 'dist/sample.html',
+    server: 'dist/',
+    startPath: '/sample.html',
+    middleware: cacheControl
+  })
+  gulp.watch('*.sketch', ['symbols'])
+})
 
 /**
  * This is needed for mapping glyphs and codepoints.
  */
 function mapGlyphs (glyph) {
   return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
+}
+
+/**
+ * This keeps browser from caching fonts for your testing environment
+ */
+function cacheControl (req, res, next) {
+  res.setHeader('Cache-control', 'no-store')
+  next()
 }
